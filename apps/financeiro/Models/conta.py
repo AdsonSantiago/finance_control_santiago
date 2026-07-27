@@ -1,14 +1,8 @@
 from django.db import models
 from django.conf import settings
+from apps.core.enums.tipo_conta import TipoConta
 
 class Conta(models.Model):
-
-    class TipoConta(models.TextChoices):
-        DINHEIRO = "DIN", "Dinheiro"
-        CORRENTE = "CC", "Conta Corrente"
-        POUPANCA = "CP", "Poupança"
-        CARTAO = "CAR", "Cartão de Crédito"
-        INVESTIMENTO = "INV", "Investimento"
 
     usuario = models.ForeignKey(
         settings.AUTH_USER_MODEL,

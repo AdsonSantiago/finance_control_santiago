@@ -1,5 +1,5 @@
 from django.contrib import admin
-from ..Models import Conta
+from apps.financeiro.models import Conta
 
 
 @admin.register(Conta)

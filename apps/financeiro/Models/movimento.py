@@ -1,14 +1,9 @@
 from django.db import models
 from django.conf import settings
-from ..Models import Conta, Categoria
+from ..models import Conta, Categoria
+from apps.core.enums.tipo_movimento import TipoMovimento
 
 class Movimento(models.Model):
-
-    class TipoMovimento(models.TextChoices):
-        RECEITA = "REC", "Receita"
-        DESPESA = "DES", "Despesa"
-        TRANSFERENCIA = "TRA", "Transferência"
-
 
     usuario = models.ForeignKey(
         settings.AUTH_USER_MODEL,

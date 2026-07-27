@@ -1,13 +1,8 @@
 from django.db import models
 from django.conf import settings
+from apps.core.enums.tipo_categoria import TipoCategoria
 
 class Categoria(models.Model):
-
-    class TipoCategoria(models.TextChoices):
-
-        RECEITA = "REC", "Receita"
-        DESPESA = "DES", "Despesa"
-        TRANSFERENCIA = "TRA", "Transferência"
 
     usuario = models.ForeignKey(
     settings.AUTH_USER_MODEL,

@@ -1,9 +1,9 @@
 from django.contrib import admin
-from ..Models import PlanejamentoFinanceiro
+from ..models import PlanejamentoFinanceiro
 
 from django.contrib import messages
 
-from apps.financeiro.exceptions import PlanejamentoException
+from apps.core.exceptions.financeiro import PlanejamentoException
 from apps.financeiro.services.planejamento_service import PlanejamentoService
 
 

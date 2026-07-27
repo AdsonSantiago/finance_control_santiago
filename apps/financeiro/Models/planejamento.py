@@ -1,25 +1,10 @@
 from django.db import models
 from django.conf import settings
-from ..Models import Conta, Categoria, Movimento
+from ..models import Conta, Categoria, Movimento
+from apps.core.enums.tipo_planejamento import TipoPlanejamento, TipoRecorrencia, Prioridade
+from apps.core.enums.tipo_status import Status
 
 class PlanejamentoFinanceiro(models.Model):
-
-    class TipoPlanejamento(models.TextChoices):
-        RECEITA = "REC", "Receita"
-        DESPESA = "DES", "Despesa"
-
-    class TipoRecorrencia(models.TextChoices):
-        NENHUMA = "NEN", "Nenhuma"
-        DIARIA = "DIA", "Diária"
-        SEMANAL = "SEM", "Semanal"
-        MENSAL = "MEN", "Mensal"
-        ANUAL = "ANU", "Anual"
-        QUINZENAL = "QUI", "Quinzenal"
-
-    class Status(models.TextChoices):
-        PENDENTE = "PEN", "Pendente"
-        PAGO = "PAG", "Pago"
-        CANCELADO = "CAN", "Cancelado"
 
     def clean(self):
         from django.core.exceptions import ValidationError
@@ -40,10 +25,7 @@ class PlanejamentoFinanceiro(models.Model):
                 raise ValidationError(
                     "A parcela atual não pode ser maior que o total de parcelas."
                 )
-    class Prioridade(models.IntegerChoices):
-        ALTA = 1, "Alta"
-        MEDIA = 2, "Média"
-        BAIXA = 3, "Baixa"
+
 
     prioridade = models.PositiveSmallIntegerField(
         choices=Prioridade.choices,

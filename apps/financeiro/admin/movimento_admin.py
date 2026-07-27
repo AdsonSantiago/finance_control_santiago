@@ -1,5 +1,5 @@
 from django.contrib import admin
-from ..Models import Movimento
+from ..models import Movimento
 
 from apps.financeiro.services.planejamento_service import PlanejamentoService
 

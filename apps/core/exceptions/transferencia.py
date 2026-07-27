@@ -1,0 +1,2 @@
+class TransferenciaException(Exception):
+    pass

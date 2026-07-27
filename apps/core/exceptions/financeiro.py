@@ -1,3 +1,5 @@
+
+
 class FinanceiroException(Exception):
     """Exceção base do módulo financeiro."""
     pass

@@ -1,8 +1,8 @@
 from django.db import transaction
-from apps.financeiro.exceptions import PlanejamentoException
+from apps.core.exceptions import PlanejamentoException
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
-from apps.financeiro.Models import (
+from apps.financeiro.models import (
     Movimento,
     PlanejamentoFinanceiro,
 )
