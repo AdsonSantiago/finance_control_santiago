@@ -1,38 +1,26 @@
+from django_filters import rest_framework as filters
+
+from apps.financeiro.models import Movimento
 
 
-class MovimentoFilter:
+class MovimentoFilter(filters.FilterSet):
 
-    @staticmethod
-    def aplicar(queryset, filtros):
+    data_inicial = filters.DateFilter(
+        field_name="data_movimento",
+        lookup_expr="gte",
+    )
 
-        if conta := filtros.get("conta"):
-            queryset = queryset.filter(
-                conta_id=conta
-            )
+    data_final = filters.DateFilter(
+        field_name="data_movimento",
+        lookup_expr="lte",
+    )
 
-        if categoria := filtros.get("categoria"):
-            queryset = queryset.filter(
-                categoria_id=categoria
-            )
+    class Meta:
 
-        if tipo := filtros.get("tipo"):
-            queryset = queryset.filter(
-                tipo=tipo
-            )
+        model = Movimento
 
-        if inicio := filtros.get("inicio"):
-            queryset = queryset.filter(
-                data_movimento__gte=inicio
-            )
-
-        if fim := filtros.get("fim"):
-            queryset = queryset.filter(
-                data_movimento__lte=fim
-            )
-
-        if texto := filtros.get("texto"):
-            queryset = queryset.filter(
-                descricao__icontains=texto
-            )
-
-        return queryset
+        fields = [
+            "tipo",
+            "conta",
+            "categoria",
+        ]

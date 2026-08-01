@@ -45,6 +45,5 @@ class MovimentoSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
 
         return Movimento.objects.create(
-            usuario=self.context["request"].user,
             **validated_data
         )

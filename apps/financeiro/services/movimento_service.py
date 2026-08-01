@@ -1,5 +1,6 @@
-from apps.financeiro.models import Conta, Categoria, Movimento
+from apps.financeiro.models import Movimento
 from apps.core.exceptions import MovimentoException
+from apps.core.enums.tipo_categoria import TipoCategoria
 from decimal import Decimal
 
 
@@ -38,7 +39,7 @@ class MovimentoService:
     )
 
     @staticmethod
-    def _validar(
+    def validar(
         *,
         usuario,
         conta,
@@ -70,8 +71,7 @@ class MovimentoService:
                 )
 
             if (
-                categoria
-                and categoria.tipo != Categoria.TipoCategoria.TRANSFERENCIA
+                categoria.tipo != TipoCategoria.TRANSFERENCIA
                 and categoria.tipo != tipo
             ):
                 raise MovimentoException(
